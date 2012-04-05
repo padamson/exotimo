@@ -1,0 +1,27 @@
+Found atom LI and basis STO3G with 3 CGBFs.
+
+Adding S type CGBF with 3 PGBFs to electron basis set.
+
+Adding S type CGBF with 3 PGBFs to electron basis set.
+
+Adding P type CGBF with 3 PGBFs to electron basis set.
+rab2,rcd2,xp,xq,rpq2,gamma1,gamma2 0.0 0.0 (0.0, 0.0, -0.75) (0.0, 0.0, 0.75) 2.25 1.27258 6.8505
+Bx0.0 0.0 0.0
+By1.0
+Bz1.0
+px px s s coulomb_repulsion=0.0
+rab2,rcd2,xp,xq,rpq2,gamma1,gamma2 0.0 0.0 (0.0, 0.0, -0.75) (0.0, 0.0, 0.75) 2.25 1.27258 6.8505
+Bx1.0
+By0.0 0.0 0.0
+Bz1.0
+py py s s coulomb_repulsion=0.0
+rab2,rcd2,xp,xq,rpq2,gamma1,gamma2 0.0 0.0 (0.0, 0.0, -0.75) (0.0, 0.0, 0.75) 2.25 1.27258 6.8505
+Bx1.0
+By1.0
+Bz0.0 0.0 1.60024
+pz pz s s coulomb_repulsion=0.19661
+rab2,rcd2,xp,xq,rpq2,gamma1,gamma2 0.0 0.0 (0.0, 0.0, -0.75) (0.0, 0.0, -0.75) 0.0 1.27258 6.8505
+Bx1.0
+By1.0
+Bz0.0 0.0 0.0 0.0 0.0
+pz pz pz pz coulomb_repulsion=0.0
