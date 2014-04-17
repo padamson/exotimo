@@ -1,17 +1,18 @@
 /*
- Constants.py: Constants for PyQuante
+ constants.chpl: Constants for ExotiMO
 
- This program is part of the PyQuante quantum chemistry program suite.
+ This program is part of the ExotiMO quantum chemistry program suite.
 
- Copyright (c) 2004, Richard P. Muller. All Rights Reserved. 
+ Copyright (c) 2014, Paul E. Adamson. All Rights Reserved. 
 
- PyQuante version 1.2 and later is covered by the modified BSD
+ ExotiMO version XXX and later is covered by the XXX
  license. Please see the file LICENSE that is part of this
  distribution. 
 */
 
 // Misc
 const PI: real = 3.14159265358979323846;
+const ZERO: real = 0.0e0;
 
 // Misc units
 const Clight: real=2.99792458e8;     // speed of light in m/s
@@ -51,3 +52,6 @@ const Rgas: real = Kboltz*hartree2kcal*1000.0; // gas constant R = 1.98722 cal/m
 //
 const TOOSMALL: real = 1.0E-09;
 const MAX_TRIES: int = 30;
+const OK: int = 0;
+const BASIS_SIZE: int = 9;
+const MATRIX_SIZE: int = BASIS_SIZE * BASIS_SIZE;
