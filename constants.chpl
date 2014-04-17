@@ -13,6 +13,7 @@
 // Misc
 const PI: real = 3.14159265358979323846;
 const ZERO: real = 0.0e0;
+const crit:real = 1.0E-6;
 
 // Misc units
 const Clight: real=2.99792458e8;     // speed of light in m/s
