@@ -13,6 +13,9 @@
 // Misc
 const PI: real = 3.14159265358979323846;
 const ZERO: real = 0.0e0;
+const HALF: real = 0.5e0;
+const ONE: real = 1.0e0;
+const TWO: real = 2.0e0;
 const crit:real = 1.0E-6;
 
 // Misc units
