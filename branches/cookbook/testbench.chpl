@@ -1,31 +1,59 @@
-const MAX_ITERATIONS: int= 50;
+use io;
+use constants;
+use getint;
 
-const D: domain(1) = {1..400};
-var HF, R, Cbar, Rold: [D] real;
-var epsilon: [1..7] real;
-var E, Rsum, term: real;
-var pppone: real;
-var m, n, i, icon, mm: int;
+var m, n:int;
+var Dmat: domain(1) = {1..2};
+var Dxy: domain(2) = {1..2,1..2}; 
+var HF, R, Cbar, Rold: [Dmat] real;
+var xy:[Dxy] real;
+
+proc main () {
+  var epsilon: [1..7] real;
+  var E, Rsum, term: real;
+  var val, pppone: real;
+  var kount, ij, ji, icon, mm: int;
+
+  readAtom("/Users/padamson/Research/exotimo/branches/cookbook/data/exotimo.in");
+  
+  mm = m*m;
+  //Set initial R to ZERO, i.e. start from H not HF
+  R = ZERO; 
+  Rold = ZERO;
+  //Assume that the first iteration will change R to be non-ZERO!
+  kount = 0;
+  do {
+    kount += 1;
+    E = ZERO; //Initialize E 
+    icon = 0; //Initialize counter
+    //Compute the one-electron Hamiltonian each time
+    for i in 1..m {
+      for j in 1..i {
+        ij = m*(j-1) + i;
+        ji = m*(i-1) + j;
+        val = pppone(xy,m,i,j);
+        HF(ij) = val;
+        HF(ji) = val;
+      }
+    }
+
+  } while (icon != 0 && kount < MAX_ITERATIONS);
+
+}
 
 proc readAtom(filename:string) {
   var infile = open(filename, iomode.r);
   var reader = infile.reader();
 
-  var m = reader.read(int),
-      n = reader.read(int);
+  m = reader.read(int);
+  n = reader.read(int);
 
-  const Dxy: domain(2) = {1..m,1..2};
-  var xy: [Dxy] real;
-  for i in 1..m {
-    xy[i,1] = reader.read(real);
-    xy[i,2] = reader.read(real);
-  }
+  Dxy = {1..m,1..2};
+
+  read_matrix(xy, reader);
+
   writeln("m=",m);
   writeln("n=",n);
-  for i in 1..m {
-    writeln("xy[",i,",1]=",xy[i,1]);
-    writeln("xy[",i,",2]=",xy[i,2]);
-  }
+  write_matrix(xy);
 }
 
-readAtom("exotimo.in");

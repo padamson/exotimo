@@ -59,3 +59,4 @@ const MAX_TRIES: int = 30;
 const OK: int = 0;
 const BASIS_SIZE: int = 9;
 const MATRIX_SIZE: int = BASIS_SIZE * BASIS_SIZE;
+const MAX_ITERATIONS: int = 50;
