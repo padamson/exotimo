@@ -1,6 +1,8 @@
 use constants;
 
 //getint for the special case of PPP integrals
+/*
+
 proc getint(i:int, j:int, k:int, l:int, mu:int, val:real, pointer: int): int {
   var status, ppptwo: int;
   var id, jd, kd, ld: int;
@@ -8,11 +10,11 @@ proc getint(i:int, j:int, k:int, l:int, mu:int, val:real, pointer: int): int {
     id = 0;
     kd = 0;
   }
-  pointer++;
-  kd++; // increment labels
+  pointer += 1;
+  kd += 1; // increment labels
   if ( kd > id ) {
     kd = 1;
-    id++;
+    id += 1;
   }
   jd = id;
   ld = kd; // ZDO approx for integrals
@@ -27,8 +29,10 @@ proc getint(i:int, j:int, k:int, l:int, mu:int, val:real, pointer: int): int {
   return status;
 }
 
+*/
+
 // PPP ZDO integrals, values from Tom Peacock's book p97
-proc ppptwo(i:int, j:int, val:real, xy[]: real, m:int):int {
+proc ppptwo(i:int, j:int, val:real, xy:[] real, m:int):int {
   var r: real;
 
   if ( i > m ) return 0;
@@ -48,7 +52,7 @@ proc ppptwo(i:int, j:int, val:real, xy[]: real, m:int):int {
   return 1;
 }
 
-proc pppone(xy[]:real, m:int, i:int, j:int):real{
+proc pppone(xy:[] real, m:int, i:int, j:int):real{
   var junk:int;
   var r, val, gamma: real;
   
@@ -56,7 +60,7 @@ proc pppone(xy[]:real, m:int, i:int, j:int):real{
   if (i == j) {//diagonal values
     val = -11.16e0;
     for k in 1..m{
-      if (i == k) continue;
+      if (i == k) then continue;
       junk = ppptwo(i,k,gamma);
       val = val - gamma; //Nuclear attraction modelled by e- repulsion
     }

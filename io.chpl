@@ -27,6 +27,17 @@ proc write_matrix(a:[]){
   }
 }
 
+proc read_matrix(a:[], reader:channel){
+  const D:domain(2) = a.domain;
+  const d1:domain(1) = D.dim(1);
+  const d2:domain(1) = D.dim(2);
+  for i in d1 { 
+    for j in d2 {
+      a[i,j] = reader.read(real);
+    }
+  }
+}
+
 proc write_array(a:[]){
   const D:domain(1) = a.domain;
   const high:int = D.high;
