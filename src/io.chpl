@@ -1,3 +1,6 @@
+use h2o;
+use classical;
+
 proc write_matrix(a:[]){
   const D:domain(2) = a.domain;
   const d1:domain(1) = D.dim(1);
@@ -38,6 +41,25 @@ proc read_matrix(a:[], reader:channel){
   }
 }
 
+proc readNuclei(reader:channel){
+  var numNuclei:int;
+  var tempCharge: int;
+  var tempPos: 3*real;
+  findStringInFile("nuclei", reader);
+  numNuclei= reader.read(int);
+  writeln("numNuclei=",numNuclei);
+  Dnuclei= {1..numNuclei};
+  for i in Dnuclei { 
+    tempCharge = reader.read(int);
+    for j in 1..3 {
+      tempPos(j) = reader.read(real);
+    }
+    nuclei[i] = new nucleus(charge=tempCharge,pos=tempPos);
+  }
+  writeNuclei();
+
+}
+
 proc write_array(a:[]){
   const D:domain(1) = a.domain;
   const high:int = D.high;
@@ -58,16 +80,23 @@ proc findStringInFile(keyword:string, reader:channel){
   }
 }
 
-proc readIn(xyz:[] real, Dxyz: domain, filename:string) {
+proc readIn(filename:string) {
   var infile = open(filename, iomode.r);
   var reader = infile.reader();
-  var natoms:int;
 
-  findStringInFile("atoms", reader);
-  natoms = reader.read(int);
-  writeln("natoms=",natoms);
-  Dxyz = {1..natoms,1..3};
-  read_matrix(xyz, reader);
-  write_matrix(xyz);
+  readNuclei(reader);
+  readBasis(reader);
+
 }
+
+proc writeNuclei(){
+  writeln("NUCLEI");
+  writeln("====================");
+  writeln("Charge   X   Y   Z");
+  for i in Dnuclei { 
+    writeln(nuclei(i).charge," ",nuclei(i).pos(1)," ",nuclei(i).pos(2)," ",nuclei(i).pos(3));
+  }
+}
+
+
 

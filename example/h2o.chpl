@@ -1,11 +1,17 @@
 use io;
+use classical;
 
 //var Dmat: domain(1) = {1};
-var Dxyz: domain(2) = {1..1,1..3}; 
-var xyz:[Dxyz] real;
+//var Dnuclei: domain(1) = {1..1}; 
+//var nuclei:[Dnuclei] nucleus;
+
+var Dnuclei: domain(1) = {1..1};
+var nuclei: [Dnuclei] nucleus;
+var Dbasis: domain(1) = {1..1};
+var basis: [Dbasis] CGBF;
 
 proc main () {
 
-  readIn(xyz, Dxyz, "/Users/padamson/Research/exotimo/trunk/example/h2o.in");
+  readIn("/Users/padamson/Research/exotimo/trunk/example/h2o.in");
 
 }
