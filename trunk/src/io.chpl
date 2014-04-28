@@ -27,6 +27,17 @@ proc write_matrix(a:[]){
   }
 }
 
+proc read_matrix(a:[], reader:channel){
+  const D:domain(2) = a.domain;
+  const d1:domain(1) = D.dim(1);
+  const d2:domain(1) = D.dim(2);
+  for i in d1 { 
+    for j in d2 {
+      a[i,j] = reader.read(real);
+    }
+  }
+}
+
 proc write_array(a:[]){
   const D:domain(1) = a.domain;
   const high:int = D.high;
@@ -39,3 +50,24 @@ proc write_array(a:[]){
   }
   write(" )\n");
 }
+
+proc findStringInFile(keyword:string, reader:channel){
+  var stringIn: string = "";
+  while (stringIn != keyword) do {
+    stringIn = reader.read(string);
+  }
+}
+
+proc readIn(xyz:[] real, Dxyz: domain, filename:string) {
+  var infile = open(filename, iomode.r);
+  var reader = infile.reader();
+  var natoms:int;
+
+  findStringInFile("atoms", reader);
+  natoms = reader.read(int);
+  writeln("natoms=",natoms);
+  Dxyz = {1..natoms,1..3};
+  read_matrix(xyz, reader);
+  write_matrix(xyz);
+}
+

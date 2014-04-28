@@ -5,14 +5,17 @@ SRC = ../src/PGBF.chpl ../src/CGBF.chpl ../src/basis.chpl ../src/cints.chpl \
 
 CHPL = chpl
 
-TARGETS = exotimo
+TARGETS = exotimo h2o
 
-default: all
+default: h2o
 
 all: $(TARGETS)
 
 exotimo: exotimo.chpl $(SRC)
 	$(CHPL) -o $@ exotimo.chpl $(SRC)
+
+h2o: ../src/io.chpl h2o.chpl
+	$(CHPL) -o ~/Research/bin/h2o ../src/io.chpl h2o.chpl
 
 clean:
 	rm -f $(TARGETS)

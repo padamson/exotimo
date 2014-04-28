@@ -4,16 +4,9 @@ class nucleus{
 }
 
 class classical{
-  var first_charge: real = 1.0;
-  var first_pos: 3*real = (0.0,0.0,0.0);
-  var num_nuclei: int = 1;
+  var num_nuclei: int;
   var nuclei_dom= [1..num_nuclei];
-  var nuclei: [nuclei_dom] nucleus = initialize_nuclei(first_charge,first_pos);
-
-  proc initialize_nuclei(charge:real,pos:3*real): [this.nuclei_dom] nucleus{
-    var temp_nucleus = new nucleus(charge=charge, pos=pos);
-    return temp_nucleus;
-  }
+  var nuclei: [nuclei_dom] nucleus;
 
   proc add_nucleus(charge:real,pos:3*real){
     var temp_nucleus = new nucleus(charge=charge,pos=pos);
