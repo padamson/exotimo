@@ -3,6 +3,8 @@ SRC = ../src/PGBF.chpl ../src/CGBF.chpl ../src/basis.chpl ../src/cints.chpl \
       ../src/Ints.chpl ../src/eigen.chpl ../src/hartree_fock.chpl \
       ../src/io.chpl
 
+H2OSRC =  ../src/io.chpl ../src/classical.chpl
+
 CHPL = chpl
 
 TARGETS = exotimo h2o
@@ -14,8 +16,8 @@ all: $(TARGETS)
 exotimo: exotimo.chpl $(SRC)
 	$(CHPL) -o $@ exotimo.chpl $(SRC)
 
-h2o: ../src/io.chpl h2o.chpl
-	$(CHPL) -o ~/Research/bin/h2o ../src/io.chpl h2o.chpl
+h2o: h2o.chpl $(H2OSRC)
+	$(CHPL) -o ~/Research/bin/h2o $(H2OSRC) h2o.chpl
 
 clean:
 	rm -f $(TARGETS)

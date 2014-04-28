@@ -1,10 +1,11 @@
-class nucleus{
-  var charge: real;
+class nucleus {
+  var charge: int;
   var pos: 3*real;
 }
 
+/*
 class classical{
-  var num_nuclei: int;
+  var num_nuclei: int = 1;
   var nuclei_dom= [1..num_nuclei];
   var nuclei: [nuclei_dom] nucleus;
 
@@ -15,3 +16,4 @@ class classical{
     this.nuclei(num_nuclei) = temp_nucleus;
   }
 }
+*/
