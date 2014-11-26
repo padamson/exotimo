@@ -3,7 +3,8 @@ use cints;
 class PGBF{
   var exponent: real;
   var origin: 3*real;
-  var powers: 3*int = (0, 0, 0);
+  var momentum: string;
+  var powers: 3*int = (0,0,0);
   var norm: real = normalization(exponent,powers);
   var coef: real = 1.0;
 
