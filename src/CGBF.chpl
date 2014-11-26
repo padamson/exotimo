@@ -3,19 +3,14 @@ use cints;
 use crys;
 
 class CGBF{
-  var origin: 3*real;
-  var powers: 3*int = (0,0,0);
+  var origin: 3*real= (0,0,0);
+  //var powers: 3*int = (0,0,0);
   var norm: real = 1.0;
-  var atid:int = 1;
-  var atno:int = 1;
+  //var atid:int = 1;
+  //var atno:int = 1;
   var num_prims:int = 1;
-  var prims_dom = [1..num_prims];
-  var pnorms: [prims_dom] real; 
-  var first_pexp: real;
-  var first_pcoef: real;
-  var pexps: [prims_dom] real = (first_pexp);
-  var pcoefs: [prims_dom] real = (first_pcoef);
-  var prims: [prims_dom] PGBF = initialize_prims(first_pexp,first_pcoef);
+  var prims_dom : domain(1) = {1..num_prims};
+  var prims: [prims_dom] PGBF;
 
   proc initialize_prims(exponent:real,coefficient:real):[this.prims_dom] PGBF{
         //Add a primitive BF to this contracted set
