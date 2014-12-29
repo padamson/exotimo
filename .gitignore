@@ -1,0 +1,14 @@
+# Spec ignores.
+/spec/*.aux
+/spec/*.ind
+/spec/*.idx
+/spec/*.ilg
+/spec/*.log
+/spec/*.out
+/spec/*.toc
+/spec/*.dvi
+/spec/*.ps
+/spec/*.pdf
+/spec/spec_pl.tex
+/spec/_chapter_temp.tex
+/spec/Syntax.tex

@@ -41,13 +41,20 @@ proc lgamma2(z:real):real{
 }
 */
 
+proc factorial(n: int): int{
+  if (n <= 1) then return 1;
+  return n*factorial(n-1);
+}
+
+proc binomial(a: int, b: int): int {return factorial(a)/(factorial(b)*factorial(a-b));}
+
 proc fB(i: int, l1: int, l2: int, px: real, ax: real, bx: real, 
 		 r: int, g: real): real {
   return binomial_prefactor(i,l1,l2,px-ax,px-bx)*Bfunc(i,r,g);
 }
 
 proc Bfunc(i: int, r: int, g: real): real{
-  return fact_ratio2(i,r)*(4*g)**(r-i);
+  return factorial_ratio2(i,r)*(4*g)**(r-i);
 }
 
 proc binomial_prefactor(s: int, ia: int, ib: int, xpa: real, xpb: real): real{
@@ -60,19 +67,16 @@ proc binomial_prefactor(s: int, ia: int, ib: int, xpa: real, xpb: real): real{
   return sum;
 } 
 
-proc binomial(a: int, b: int): int {return fact(a)/(fact(b)*fact(a-b));}
 
-proc fact_ratio2(a: int, b: int): int { return fact(a)/fact(b)/fact(a-2*b); }
-
-proc fact(n: int): int{
-  if (n <= 1) then return 1;
-  return n*fact(n-1);
+proc factorial_ratio2(a: int, b: int): int { 
+  return factorial(a)/factorial(b)/factorial(a-2*b); 
 }
 
+
 /* double factorial function = 1*3*5*...*n */
-proc fact2(n: int): int{ 
+proc double_factorial(n: int): int{ 
   if (n <= 1) then return 1;
-  return n*fact2(n-2);
+  return n*double_factorial(n-2);
 }
 
 proc dist2(x1: 3*real, x2: 3*real): real{
@@ -198,8 +202,8 @@ proc A_term(i:int, r:int, u:int, l1:int, l2:int,
     PAx:real, PBx:real, CPx:real, gamma:real): real {
   /* THO eq. 2.18 */
   return -1**i * binomial_prefactor(i,l1,l2,PAx,PBx)*
-    -1**u * fact(i)* CPx**(i-2*r-2*u) *
-    (0.25/gamma)**(r+u)/fact(r)/fact(u)/fact(i-2*r-2*u);
+    -1**u * factorial(i)* CPx**(i-2*r-2*u) *
+    (0.25/gamma)**(r+u)/factorial(r)/factorial(u)/factorial(i-2*r-2*u);
 }
 
 proc A_array(l1:int, l2:int, PA:real, PB:real,
@@ -236,7 +240,7 @@ proc B_term(i1: int, i2: int, r1: int, r2: int, u: int, l1: int, l2: int,
   /* THO eq. 2.22 */
   return fB(i1,l1,l2,Px,Ax,Bx,r1,gamma1)
     *((-1)**i2)*fB(i2,l3,l4,Qx,Cx,Dx,r2,gamma2)
-    *((-1)**u)*fact_ratio2(i1+i2-2*(r1+r2),u)
+    *((-1)**u)*factorial_ratio2(i1+i2-2*(r1+r2),u)
     *(Qx-Px)**(i1+i2-2*(r1+r2)-2*u) / delta**(i1+i2-2*(r1+r2)-u);
 }
 
@@ -359,7 +363,7 @@ proc three_center_1D(xi: real, ai: int, alphai: real,
       n = (q+r+s)/2;
       intgl += binomial(ai,q)*binomial(aj,r)*binomial(ak,s)*
 	    xpi**(ai-q) * xpj**(aj-r) * xpk**(ak-s) *
-	    fact2(2*n-1)/(2*gamma)**n*sqrt(PI/gamma);
+	    double_factorial(2*n-1)/(2*gamma)**n*sqrt(PI/gamma);
     }
   }
   return dx*intgl;
@@ -389,7 +393,7 @@ proc overlap_1D(l1:int, l2:int, PAx:real,PBx:real, gamma:real): real{
   var sum:real;
   for i in [0..floor(0.5*(l1+l2)):int] {
     sum += binomial_prefactor(2*i,l1,l2,PAx,PBx)* 
-      fact2(2*i-1)/((2*gamma)**i);
+      double_factorial(2*i-1)/((2*gamma)**i);
   }
   return sum;
 }
@@ -413,7 +417,7 @@ proc kinetic(
 proc normalization(alpha:real,powers:3*int):real{
     var (l,m,n):3*int = powers;
     return sqrt((2**(2*(l+m+n)+1.5))*(alpha**(l+m+n+1.5))/
-          fact2(2*l-1)/fact2(2*m-1)/fact2(2*n-1)/(PI**1.5));
+          double_factorial(2*l-1)/double_factorial(2*m-1)/double_factorial(2*n-1)/(PI**1.5));
 }
 
 
