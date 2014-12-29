@@ -1,4 +1,4 @@
-SRC = ../src/PGBF.chpl ../src/CGBF.chpl ../src/basis.chpl ../src/cints.chpl \
+EXSRC = ../src/PGBF.chpl ../src/CGBF.chpl ../src/basis.chpl ../src/cints.chpl \
       ../src/constants.chpl ../src/crys.chpl ../src/classical.chpl \
       ../src/Ints.chpl ../src/eigen.chpl ../src/hartree_fock.chpl \
       ../src/io.chpl
@@ -13,12 +13,12 @@ default: h2o
 
 all: $(TARGETS)
 
-exotimo: exotimo.chpl $(SRC)
-	$(CHPL) -o $@ exotimo.chpl $(SRC)
+exotimo: exotimo.chpl $(EXSRC)
+	$(CHPL) -o ../bin/exotimo exotimo.chpl
 
 h2o: h2o.chpl $(H2OSRC)
-	$(CHPL) -o ~/Research/bin/h2o $(H2OSRC) h2o.chpl
+	$(CHPL) -compopts '-M ../src' -o ../bin/h2o h2o.chpl
 
 clean:
-	rm -f $(TARGETS)
+	rm -f ../bin/exotimo ../bin/h2o
 

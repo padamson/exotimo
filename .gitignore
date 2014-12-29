@@ -1,3 +1,5 @@
+/bin
+
 # Spec ignores.
 /spec/*.aux
 /spec/*.ind
