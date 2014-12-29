@@ -2,11 +2,21 @@
 \label{Scope}
 \index{scope}
 
-ExotiMO is a new quantum chemistry package that is intended
-for modeling of systems of arbitrary numbers and types of 
-classical and quantum particles.
+ExotiMO is a software package that is intended for \textit{ab initio} molecular quantum chemistry
+studies, and is suited for modeling of systems of arbitrary numbers and types of 
+classical (e.g. nucleonic) and quantum (e.g. electronic, muonic) particles. 
+This specification is relevant to version 1.0 of the package. Future versions
+will have additional features.
 
-This document is ultimately intended to be the definitive
-specification of the ExotiMO package.  The current draft is a
-work-in-progress and therefore incomplete.
+Briefly, ExotiMO can compute self-consistent field (SCF) wavefunctions at the Restricted Hartree-Fock (RHF)
+level. Second-order M\{o}ller-Plesset (MP2) correlation corrections to RHF wavefunctions is available. 
+Gradients of classical particle and basis function center positions are available for automatic geometry optimization.  
 
+Many basis sets are stored internally.
+
+Computations are performed using direct techniques. Although not the primary focus of this version, 
+the package is written in the Chapel programming language, and it is meant to be massively parallel 
+"from the ground up." 
+
+For sytems containing electrons and one positron, the two-photon annihilation rate and the two-photon momentum density (TPMD)
+are availble as wavefunction properties.
