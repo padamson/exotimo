@@ -169,16 +169,19 @@
 \setlength{\parindent}{0in}
 \setlength{\parskip}{4mm plus2mm minus1mm}
 
+\part{Introduction}
 \input{Purpose}
 \cleardoublepage
-\input{Scope}
+\input{Acknowledgments}
 \cleardoublepage
 \input{Notation}
 \cleardoublepage
 \input{Organization}
 \cleardoublepage
-\input{Acknowledgments}
+\part{Functional (\ie Requirements) Specification}
+\input{Scope}
 \cleardoublepage
+\part{Technical Specification}
 %\input{Language_Overview}
 %\cleardoublepage
 %\input{Lexical_Structure}
@@ -244,4 +247,8 @@
 %\cleardoublepage
 \markboth{ExotiMO Package Specification}{Index}
 \input{spec.ind}
+
+\bibliographystyle{plain}       
+\bibliography{master} 
+
 \end{document}

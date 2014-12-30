@@ -2,21 +2,57 @@
 \label{Scope}
 \index{scope}
 
+\section{Introduction}
+
 ExotiMO is a software package that is intended for \textit{ab initio} molecular quantum chemistry
 studies, and is suited for modeling of systems of arbitrary numbers and types of 
-classical (e.g. nucleonic) and quantum (e.g. electronic, muonic) particles. 
+classical (\eg nucleonic) and quantum (\eg electronic, muonic) particles. 
 This specification is relevant to version 1.0 of the package. Future versions
 will have additional features.
 
+\begin{TODO}
+Describe the inspiration behind this approach to developing ExotiMO (Cook, Handbook of Computational Quantum 
+Chemistry \cite{cook}).  Write this after the basic architecture and approach to documentation (WEB?) is determined.
+\end{TODO}
+
+The package is structured in such a way that it will serve three main purposes simultaneously:
+\begin{itemize}
+\item \textbf{Library}: ExotiMO can be viewed as a suite of data and Chapel code that can be used to 
+develop new quantum chemistry applications. ExotiMO classes (\eg the contracted Gaussian basis function class), 
+functions (\eg the two-electron integral function), and data (\eg the STO-3G basis set) can be accessed 
+by simply adding the appropriate \lstinline{use module} statement to your Chapel code and passing the
+{\footnotesize\texttt{-compopts '-M \$EXOTIMO\_HOME/src'}} option to the 
+\lstinline{chpl} compiler.
+\item \textbf{Executable}: Makefiles are provided to generate executables to be used as "black boxes" with
+properly formatted input files to run the supported calculations described below.
+\item \textbf{Textbook}: This specification and the documented source code is written in such a way that an 
+aspiring code developer can use ExotiMO to learn various techniques in quantum chemistry.
+\end{itemize}
+
+\begin{TODO}
+Revisit the above description of the structure after the basic requirements for ExotiMO classes, 
+functions, and code documentation are developed.
+\end{TODO}
+
+\begin{TODO}
+Determine how best to serve the "Textbook" purpose through documentation, citing, and code readability.
+\end{TODO}
+
 Briefly, ExotiMO can compute self-consistent field (SCF) wavefunctions at the Restricted Hartree-Fock (RHF)
-level. Second-order M\{o}ller-Plesset (MP2) correlation corrections to RHF wavefunctions is available. 
+level. Second-order M\o ller-Plesset (MP2) correlation corrections to RHF wavefunctions is available. 
 Gradients of classical particle and basis function center positions are available for automatic geometry optimization.  
 
 Many basis sets are stored internally.
 
-Computations are performed using direct techniques. Although not the primary focus of this version, 
+Computations are performed using direct techniques. Although not the primary focus of version 1.0, 
 the package is written in the Chapel programming language, and it is meant to be massively parallel 
 "from the ground up." 
 
-For sytems containing electrons and one positron, the two-photon annihilation rate and the two-photon momentum density (TPMD)
-are availble as wavefunction properties.
+For sytems containing electrons and one positron, to facilitate comparison with experiment, the 
+two-photon annihilation rate and the 
+two-photon momentum density (TPMD) are availble as wavefunction properties.
+
+\begin{openissue}
+Should one of the primary focuses of ExotiMO be to connect with experiment wherever possible?
+\end{openissue}
+

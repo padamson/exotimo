@@ -1,6 +1,8 @@
 /bin
 
 # Spec ignores.
+/spec/*.bbl
+/spec/*.blg
 /spec/*.aux
 /spec/*.ind
 /spec/*.idx
