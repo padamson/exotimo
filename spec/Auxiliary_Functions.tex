@@ -1,3 +1,4 @@
+%This is a comment
 \sekshun{Auxiliary Functions}
 \label{Auxiliary_Functions}
 \index{auxiliary functions}
@@ -15,18 +16,16 @@ In the code
 use auxiliary;
 \end{chapelpre}
 \begin{chapel}
-var a: int = factorial(2);
-var b: int = factorial(4);
+for n in (2, 4, 9) do
+  writeln(factorial(n));
 \end{chapel}
-we want the factorial function to calculate $2!$ and $4!$, storing the results in \lstinline{a}
-and \lstinline{b}, respectively.
+we use the factorial function to write $2!$, $4!$, and $9!$ out on new lines.
 \begin{chapelpost}
-writeln(a);
-writeln(b);
 \end{chapelpost}
 \begin{chapeloutput}
 2
 24
+362880
 \end{chapeloutput}
 \end{chapelexample}
 
@@ -40,8 +39,9 @@ proc factorial(n: int): int{
 \end{chapel}
 \end{chapelsource}
 
-
 \section{Binomial}
+\index{auxiliary functions!binomial function}
+\index{binomial function}
 
 We need a function, \lstinline{binomial}, that computes the binomial coefficient $\binom{m}{n}$.
 \begin{chapelexample}{binomialTest.chpl}
@@ -50,22 +50,33 @@ In the code
 use auxiliary;
 \end{chapelpre}
 \begin{chapel}
-var a: int = binomial(100,2);
-var b: int = binomial(50,3);
+for m in (10, 15, 20) do {
+  for n in (3, 5, 7) do {
+    writeln(binomial(m,n));
+  }
+}
 \end{chapel}
-we want the binomial function to calculate $\binom{100}{2}$ and $\binom{50}{3}$, storing the results in \lstinline{a}
-and \lstinline{b}, respectively.
+we use the \lstinline{binomial} function to output $\binom{m}{n}$ 
+for $m\in\{10, 15, 20\}$ and $n \in \{3, 5, 7\}$.
 \begin{chapelpost}
 writeln(a);
 writeln(b);
 \end{chapelpost}
 \begin{chapeloutput}
-4950
-19600
+120
+252
+120
+455
+3003
+6435
+1140
+15504
+77520
 \end{chapeloutput}
 \end{chapelexample}
 
-The code that provides the binomial function is straightforward and requires the factorial function:
+The code that provides the \lstinline{binomial} function is straightforward 
+and requires the \lstinline{factorial} function:
 \begin{chapelsource}{auxiliary.chpl}
 \begin{chapel}
 proc binomial(m: int, n: int): int {
