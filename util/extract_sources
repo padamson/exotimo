@@ -110,7 +110,7 @@ def ClearLists():
     del chapelwideoutput[:]
     del chapelprintoutput[:]
 
-# Write out the test files
+# Write out the source files
 def OutputTest(lineno, currTestName):
     global TotalTests, TotalFutures, TotalIgnored
     if (len(chapelfuture) > 0) and not options.gen_futures:
@@ -136,7 +136,8 @@ def OutputTest(lineno, currTestName):
         testName = newof
 
     # add full path
-    testName = outdir+'/'+curdir+'/'+testName
+#pa    testName = outdir+'/'+curdir+'/'+testName
+    testName = outdir+'/'+testName
 
     if options.verbose:
         sys.stdout.write('\tWriting %s.chpl (line %d)\n'
@@ -182,14 +183,14 @@ def OutputTest(lineno, currTestName):
         WriteTestFile(fh, chapelprediff)
         os.chmod(testName+'.prediff', 0755)
 
-    # write out .good files
-    if len(chapeloutput) > 0 or len(chapelprintoutput) > 0:
-        WriteGoodFile(fh, chapeloutput, testName)
-        WriteGoodFile(fh, chapelprintoutput, testName)
-    else:
-        # write an empty .good file
-        fh = open(testName+'.good', 'w')
-        fh.close()
+#pa    # write out .good files
+#pa    if len(chapeloutput) > 0 or len(chapelprintoutput) > 0:
+#pa        WriteGoodFile(fh, chapeloutput, testName)
+#pa        WriteGoodFile(fh, chapelprintoutput, testName)
+#pa    else:
+#pa        # write an empty .good file
+#pa        fh = open(testName+'.good', 'w')
+#pa        fh.close()
 
     # write out .no-local.good file if it exists.
     if len(chapelwideoutput) > 0:
@@ -264,6 +265,10 @@ if not os.path.isdir(outdir):
 currTestName = None
 
 for infile in args:
+    if options.verbose:
+      sys.stdout.write('***\n')
+      sys.stdout.write('*** Generating sources from file %s\n'%(infile))
+      sys.stdout.write('***\tOutput directory: %s\n'%(options.outdir))
     #
     # Read the input file
     #
@@ -277,14 +282,14 @@ for infile in args:
 
     curinfile = realinfile
     # curdir = realinfile.rsplit('/, 1)[1]+'.tests'
-    curdir = (realinfile.rsplit('/', 1)[1]).rsplit('.', 1)[0]
-    if not os.path.isdir(outdir+'/'+curdir):
-        os.mkdir(outdir+'/'+curdir)
-    if options.verbose:
-        sys.stdout.write('***\n')
-        sys.stdout.write('*** Generating tests from from %s\n'%(infile))
-        sys.stdout.write('***\tOutput directory: %s/%s\n'%
-                         (options.outdir,curdir))
+#pa    curdir = (realinfile.rsplit('/', 1)[1]).rsplit('.', 1)[0]
+#pa    if not os.path.isdir(outdir+'/'+curdir):
+#pa        os.mkdir(outdir+'/'+curdir)
+#pa    if options.verbose:
+#pa        sys.stdout.write('***\n')
+#pa        sys.stdout.write('*** Generating tests from from %s\n'%(infile))
+#pa        sys.stdout.write('***\tOutput directory: %s/%s\n'%
+#pa                         (options.outdir,curdir))
 
     lineno = 0
     testlineno = lineno
@@ -297,7 +302,7 @@ for infile in args:
             pos += 11
             if line.find('source}', pos) == pos:
                 if options.debug:
-                    sys.stdout.write('>>> Writing out test example: %s\n'%(currTestName))
+                    sys.stdout.write('>>> Writing out source chunk: %s\n'%(currTestName))
                 OutputTest(testlineno, currTestName)
                 currTestName = None
                 ClearLists()
@@ -318,7 +323,7 @@ for infile in args:
                 sys.stdout.write('>>> %s\n'%(line))
             if (line.find('source}{', pos) == pos):
                 testlineno = lineno
-                currTestName = line[pos+9:-2]
+                currTestName = line[pos+8:-2]
                 current = None
                 if options.debug:
                     sys.stdout.write('>>> Found Chapel Source: %s\n'%(currTestName))
@@ -382,11 +387,11 @@ for infile in args:
         if (line[0].strip() != '%') and pos > -1:
             TotalExamples += 1
 
-    if not os.listdir(outdir+'/'+curdir):
-        os.rmdir(outdir+'/'+curdir)
-        if options.verbose:
-            sys.stdout.write('*** Removing empty directory %s/%s\n'%
-                             (options.outdir,curdir))
+#pa    if not os.listdir(outdir+'/'+curdir):
+#pa        os.rmdir(outdir+'/'+curdir)
+#pa        if options.verbose:
+#pa            sys.stdout.write('*** Removing empty directory %s/%s\n'%
+#pa                             (options.outdir,curdir))
 
 
 if options.verbose:

@@ -8,15 +8,6 @@ ExotiMO relies on several auxiliary functions. This chapter details those functi
 \section{Factorial}
 \index{auxiliary functions!factorial}
 \index{factorial}
-This is just a sraightforward $n!$ function.
-\begin{chapelsource}{auxiliary.chpl}
-\begin{chapel}
-proc factorial(n: int): int{
-  if (n <= 1) then return 1;
-  return n*factorial(n-1);
-}
-\end{chapel}
-\end{chapelsource}
 
 \begin{chapelexample}{factorialTest.chpl}
 In the code
@@ -27,7 +18,7 @@ use auxiliary;
 var a: int = factorial(2);
 var b: int = factorial(4);
 \end{chapel}
-the factorial function is called to calculate $2!$ and $4!$, storing the results in \lstinline{a}
+we want the factorial function to calculate $2!$ and $4!$, storing the results in \lstinline{a}
 and \lstinline{b}, respectively.
 \begin{chapelpost}
 writeln(a);
@@ -38,5 +29,49 @@ writeln(b);
 24
 \end{chapeloutput}
 \end{chapelexample}
+
+The code that provides the $n!$ function is straightforward:
+\begin{chapelsource}{auxiliary.chpl}
+\begin{chapel}
+proc factorial(n: int): int{
+  if (n <= 1) then return 1;
+  return n*factorial(n-1);
+}
+\end{chapel}
+\end{chapelsource}
+
+
+\section{Binomial}
+
+We need a function, \lstinline{binomial}, that computes the binomial coefficient $\binom{m}{n}$.
+\begin{chapelexample}{binomialTest.chpl}
+In the code
+\begin{chapelpre}
+use auxiliary;
+\end{chapelpre}
+\begin{chapel}
+var a: int = binomial(100,2);
+var b: int = binomial(50,3);
+\end{chapel}
+we want the binomial function to calculate $\binom{100}{2}$ and $\binom{50}{3}$, storing the results in \lstinline{a}
+and \lstinline{b}, respectively.
+\begin{chapelpost}
+writeln(a);
+writeln(b);
+\end{chapelpost}
+\begin{chapeloutput}
+4950
+19600
+\end{chapeloutput}
+\end{chapelexample}
+
+The code that provides the binomial function is straightforward and requires the factorial function:
+\begin{chapelsource}{auxiliary.chpl}
+\begin{chapel}
+proc binomial(m: int, n: int): int {
+  return factorial(m)/(factorial(n)*factorial(m-n));
+}
+\end{chapel}
+\end{chapelsource}
 
 
