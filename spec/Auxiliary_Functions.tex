@@ -1,0 +1,42 @@
+\sekshun{Auxiliary Functions}
+\label{Auxiliary_Functions}
+\index{auxiliary functions}
+\index{functions!auxiliary}
+
+ExotiMO relies on several auxiliary functions. This chapter details those functions.
+
+\section{Factorial}
+\index{auxiliary functions!factorial}
+\index{factorial}
+This is just a sraightforward $n!$ function.
+\begin{chapelsource}{auxiliary.chpl}
+\begin{chapel}
+proc factorial(n: int): int{
+  if (n <= 1) then return 1;
+  return n*factorial(n-1);
+}
+\end{chapel}
+\end{chapelsource}
+
+\begin{chapelexample}{factorialTest.chpl}
+In the code
+\begin{chapelpre}
+use auxiliary;
+\end{chapelpre}
+\begin{chapel}
+var a: int = factorial(2);
+var b: int = factorial(4);
+\end{chapel}
+the factorial function is called to calculate $2!$ and $4!$, storing the results in \lstinline{a}
+and \lstinline{b}, respectively.
+\begin{chapelpost}
+writeln(a);
+writeln(b);
+\end{chapelpost}
+\begin{chapeloutput}
+2
+24
+\end{chapeloutput}
+\end{chapelexample}
+
+

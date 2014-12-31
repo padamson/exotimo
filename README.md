@@ -9,5 +9,9 @@ Molecular orbital calculations including exotic particles such as positrons and 
 testing
 =======
 
-Create `alias test_exotimo="$CHPL_HOME/util/start_test -no-chpl-home-warn -compopts '-M ../src'"` and execute
-`test_exotimo` in the `test` directory.
+TODO: describe use of Makefile.devel to generate tests from spec
+TODO: add option to Makefile.devel to execute tests generated from spec
+
+ExotiMO is setup to use the `start_test` script that ships with Chapel. 
+Create `alias testexotimo="$CHPL_HOME/util/start_test -no-chpl-home-warn -compopts '-M $EXOTIMO_HOME/src'"` and execute
+`testexotimo` in a directory containing ExotiMO tests (i.e. `.chpl` and `.good` files).

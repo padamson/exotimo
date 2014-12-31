@@ -1,4 +1,3 @@
-
 MAKEFLAGS = --no-print-directory
 
 CHPL = chpl

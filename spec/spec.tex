@@ -54,6 +54,13 @@
 \end{quote}
 }
 
+\newenvironment{chapelsource}[1]{
+\begin{quote}
+{\it Source (#1)}.
+}{
+\end{quote}
+}
+
 \newenvironment{chapelexample}[1]{
 \begin{quote}
 {\it Example (#1)}.
@@ -182,6 +189,8 @@
 \input{Scope}
 \cleardoublepage
 \part{Technical Specification}
+\input{Auxiliary_Functions}
+\cleardoublepage
 %\input{Language_Overview}
 %\cleardoublepage
 %\input{Lexical_Structure}

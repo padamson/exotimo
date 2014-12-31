@@ -1,5 +1,11 @@
 /bin
 
+# Spec source ignores.
+/src/
+
+# Spec test ignores.
+/test/
+
 # Spec ignores.
 /spec/*.bbl
 /spec/*.blg
