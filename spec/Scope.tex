@@ -2,8 +2,6 @@
 \label{Scope}
 \index{scope}
 
-\section{Introduction}
-
 ExotiMO is a software package that is intended for \textit{ab initio} molecular quantum chemistry
 studies, and is suited for modeling of systems of arbitrary numbers and types of 
 classical (\eg nucleonic) and quantum (\eg electronic, muonic) particles. 
@@ -21,12 +19,13 @@ by simply adding the appropriate \lstinline{use module} statement to your Chapel
 \item \textbf{Executable}: Makefiles are provided to generate executables to be used as "black boxes" with
 properly formatted input files to run the supported calculations described below.
 \item \textbf{Textbook}: This specification and the documented source code is written in such a way that an 
-aspiring code developer can use ExotiMO to learn various techniques in quantum chemistry.
+aspiring code developer can use ExotiMO to learn various techniques in test-driven development, code
+documentation, and quantum chemistry.
 \end{itemize}
 
 \begin{TODO}
 Revisit the above description of the structure after the basic requirements for ExotiMO classes, 
-functions, and code documentation are developed.
+functions, and code documentation (i.e. the spec is the code) are developed.
 \end{TODO}
 
 \begin{TODO}
@@ -48,6 +47,7 @@ two-photon annihilation rate and the
 two-photon momentum density (TPMD) are availble as wavefunction properties.
 
 \begin{openissue}
-Should one of the primary focuses of ExotiMO be to connect with experiment wherever possible?
+Should one of the primary focuses of ExotiMO be to connect with experiment wherever possible? In other words,
+should connection with experiment be a primary focus highlighted in the scope beyond just the reference to
+PAS?
 \end{openissue}
-
