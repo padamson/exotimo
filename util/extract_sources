@@ -127,23 +127,27 @@ def OutputTest(lineno, currTestName):
         testName = currTestName
 
     currTestNames.append(testName)
-    if currTestNames.count(testName) > 1:
-        sys.stdout.write("WARNING: Test name '%s' already specified\n"%
+    currTestNamesCount=currTestNames.count(testName)
+    testName = outdir+'/'+testName
+    if currTestNamesCount > 1:
+        sys.stdout.write("WARNING: Source name '%s' already specified\n"%
                          (testName))
-        newof = testName + '.' + str(currTestNames.count(testName))
-        currTestNames.append(newof)
-        sys.stdout.write('         Renaming it to %s\n'%(newof));
-        testName = newof
+#pa        newof = testName + '.' + str(currTestNames.count(testName))
+#pa        currTestNames.append(newof)
+#pa        sys.stdout.write('         Renaming it to %s\n'%(newof));
+#pa        testName = newof
+        sys.stdout.write('         Adding entry %d to %s\n'%(currTestNamesCount,testName));
+        fh = open(testName+'.chpl', 'a')
+    else:
+        fh = open(testName+'.chpl', 'w')
 
     # add full path
 #pa    testName = outdir+'/'+curdir+'/'+testName
-    testName = outdir+'/'+testName
 
     if options.verbose:
         sys.stdout.write('\tWriting %s.chpl (line %d)\n'
                          %(testName.rsplit('/', 1)[1], lineno))
 
-    fh = open(testName+'.chpl', 'w')
     if options.debug:
         sys.stdout.write('>>> Opening %s\n'%(testName+'.chpl'))
 
