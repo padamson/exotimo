@@ -2,8 +2,9 @@
 \label{Development_Approach}
 \index{development approach}
 
-Before we dive into developing requirements and code, a brief description of this book's approach, a hybrid of 
-Test-Driven Development and Literate Programming (TDD-LP), is in order.
+Before we dive into developing requirements and hacking away at code, a brief description of 
+this book's approach to software development, a hybrid of Test-Driven Development and 
+Literate Programming, is in order.
 
 \section{Test-Driven Development}
 Test-driven development, or TDD, is the notion that developers will improve both the design and
@@ -58,37 +59,59 @@ the electron-electron repulsion integral in a quantum chemistry code must have s
 of the type of electronic wavefunction for which the code is valid!
 
 \section{Literate Programming}
-\begin{TODO}
-Add description of LP and its benefits. 
-\end{TODO}
+Enter stage right...literate programming.  
 
-Childs\cite{childs} uses the following list of requirements to imply a definition of a ``literate program'': 
+A typical computer program consists of a text file 
+containing program code. Strewn throughout will likely be scant plain text descriptions separated out by 
+``comment delimeters'' that document various aspects of the code.
+Since the actual code itself is presented in a such a way that supports the syntax, ordering, and structure 
+that the programming language (and hence compiler) requires, the code comments will
+be relatively disorganized and disjointed if you are reading them for documentation purposes. 
+The way a code suite is organized in source is generally much different than the way thorough documentation is 
+developed. The plain text nature of the comments also greatly limits their information value.
+
+In literate programming the emphasis is reversed. Instead of writing \textit{a lot of} code that contains 
+\textit{some} plain text documentation, 
+the literate programmer writes \textit{thorough, well-organized, and content-rich} documentation that contains 
+\textit{modular and efficient} code. 
+The result is that the commentary is no longer hidden within a program surrounded by 
+comment delimiters; instead, it is made the main focus. 
+The ``program'' becomes primarily a document directed at humans, with the 
+code interspersed within the documentation, separted out by ``code delimiters'' so that it can be extracted 
+out and processed into source code by literate programming tools.
+
+\begin{quote}
+``The effect of this simple shift of emphasis can be so profound as to change one's whole approach to programming. Under the literate programming paradigm, the central activity of programming becomes that of conveying meaning to other intelligent beings rather than merely convincing the computer to behave in a particular way. It is the difference between performing and exposing a magic trick.'' 
+\begin{flushright}
+-FunnelWeb Tutorial Manual\cite{funnelweb-what-is-literate-programming}
+\end{flushright}
+\end{quote}
+
+The following list of requirements can be used to define a ``literate program:''\cite{childs} 
 
 \begin{enumerate}
-\item The high-level language code and the system documentation of the program come from the same 
+\item The high-level language code and the associated documentation come from the same 
 set of source files.
-\item The documentation and high-level language code are complementary and should address the same 
-elements of the algorithms being written.
-\item The literate program should have logical subdivisions. Knuth called these modules or sections.
-\item The system should be presented in an order based upon logical considerations rather than 
-syntactic constraints.
-\item The documentation should include an examination of alternative solutions and should suggest 
-future maintenance problems and extensions.
-\item The documentation should include a description of the problem and its solution. This should 
-include all aids such as mathematics and graphics that enhance communication of the problem statement 
-and the understanding of its challenge.
+\item The documentation and high-level language code for a given aspect of the program should be 
+adjacent to each other when presented to the reader.
+\item The literate program should be subdivided in a logical way.
+\item The program should be presented in an order that is logical from the standpoint of documentation
+rather than to conform to syntactic constraints of the underlying programming language(s).
+\item The documentation should include notes on open issues and future areas for development.
+\item Most importantly, the documentation should include a description of the problem and its solution. 
+This should include all aids such as mathematics and graphics that enhance communication of the problem 
+statement and the understanding of its challenge.
 \item Cross references, indices, and different fonts for text, high-level language keywords, 
 variable names, and literals should be reasonably automatic and obvious in the source and the documentation.
-\item The approach encourages writing programs in small chunks that include the documentation, 
-definitions, and code.
+\item The program is written in small chunks that include the documentation, definitions, and code.
 \end{enumerate}
 
 The documentation portion may be any text that aids the understanding of the problem solved by the code 
-(\eg a description of the algorithm that is implemented).  The documentation is often significantly 
+(\eg description of the algorithm that is implemented).  The documentation is often significantly 
 longer than the code itself. Ideally, the problem is described in a way that is agnostic of the language
 in which the code is written.  For example, documentation for code that integrates a function $f(x)$ would
 have discussion of discontinuities, various integration methods available (\eg trapezoidal, Simpson), 
-domain of integration, etc. 
+domain of integration, \etc. 
 
 \section{Hybrid Test-Driven Design and Literate Programming}
 The \lstinline{seamless} package aims to enable a hybrid of the TDD and LP approaches for development

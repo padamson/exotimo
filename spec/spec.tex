@@ -37,8 +37,17 @@
 \usepackage[ps2pdf]{hyperref}
 \fi
 
-\newcommand{\ie}{\emph{i.e.}}
-\newcommand{\eg}{\emph{e.g.}}
+\usepackage{xspace}
+\newcommand*{\eg}{\emph{e.g.}\@\xspace}
+\newcommand*{\ie}{\emph{i.e.}\@\xspace}
+
+\makeatletter
+\newcommand*{\etc}{%
+  \@ifnextchar{.}%
+  {etc}%
+  {etc.\@\xspace}%
+}
+\makeatother
 
 \newenvironment{TODO} {
 \begin{quote}
