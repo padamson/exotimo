@@ -10,4 +10,4 @@ Emphasis will be on the following:
 Development Approach
 ====================
 
-ExotiMO is developed using the [seamless](githum.com/padamson/seamless) approach.
+ExotiMO is developed using the [seamless](https://github.com/padamson/seamless) approach.
