@@ -1,0 +1,14 @@
+\sekshun{Requirement Traceability Matrix}
+\label{Requirement_Traceability_Matrix}
+\index{requirement traceability matrix}
+
+\begin{table}[htbp]
+\centering
+\caption{Requirement traceability matrix.}
+\begin{tabular}{cc}
+\textbf{Requirement} & \textbf{Specification}   \\ 
+\toprule
+\xintFor* #1 in \requirements\do {\ref{#1}&\specswithreq{#1}\\ 
+  \midrule}%
+\end{tabular}
+\end{table}

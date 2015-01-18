@@ -1,11 +1,3 @@
-/bin
-
-# Spec source ignores.
-/src/
-
-# Spec test ignores.
-/test/
-
 # Spec ignores.
 /spec/*.bbl
 /spec/*.blg
@@ -21,4 +13,3 @@
 /spec/*.pdf
 /spec/spec_pl.tex
 /spec/_chapter_temp.tex
-/spec/Syntax.tex

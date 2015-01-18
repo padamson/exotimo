@@ -2,76 +2,63 @@
 \label{Notation}
 \index{notation}
 
-Special notations are used in this specification to denote ExotiMO Chapel code
-and to denote ExotiMO syntax.
+Three types of code chunks that make up the software package are 
+presented in this specification and delineated
+with the appropriate keyword in italics: 
+\textit{Source, Helper, or Test}.  The filename containing the code
+chunk is given in parenthesis following the keyword. A brief description 
+of the code chunk is also listed.
+The actual code is represented with a fixed-width font where keywords are
+bold and comments are italicized. An example helper code chunk is listed
+below.
 
-ExotiMO Chapel code is represented with a fixed-width font where keywords are
-bold and comments are italicized.
-\begin{example}
+\textit{Helper (testFunctions.chpl)}. Provide the functions used
+in the tests.
 \begin{chapel}
-for i in D do   // iterate over domain D
-  writeln(i);   // output indices in D
+  proc f1(x:real):real {
+    return x**3;
+  } 
+  proc f2(x:real):real {
+    return 1/x;
+  } 
+  proc f3(x:real):real {
+    return x;
+  } 
 \end{chapel}
-\end{example}
 
-ExotiMO syntax is represented with standard syntax notation in which
-productions define the syntax of the package.  A production is
-defined in terms of non-terminal ({\it italicized}) and terminal
-(non-italicized) symbols.  The complete syntax defines all of the
-non-terminal symbols in terms of one another and terminal symbols.
+Examples of how to use the software are also provided and delineated with the
+keyword \textit{Example} followed by a description of the use case. Here is
+an example of an \textit{Example}:
 
-A definition of a non-terminal symbol is a multi-line construct.  The
-first line shows the name of the non-terminal that is being defined
-followed by a colon.  The next lines before an empty line define the
-alternative productions to define the non-terminal.
-\begin{example}
-The production
-\begin{syntax_donotcollect}
-bool-literal:
-  `true'
-  `false'
-\end{syntax_donotcollect}
-defines \sntx{bool-literal} to be either the symbol \sntx{`true'} or
-\sntx{`false'}.
-\end{example}
-In the event that a single line of a definition needs to break across
-multiple lines of text, more indentation is used to indicate that it
-is a continuation of the same alternative production.
+\textit{Example}. The following line of code calls the function
+\chpl{leftRectangleIntegration} to perform the integral of the function \chpl{f1}
+over the interval $[1.0,4.0]$ using the left rectangle method with 100 subdivisions
+and stores the result in the variable \chpl{result}.
+\begin{chapel}
+  var result: real = leftRectangleIntegration(a = 1.0, b = 4.0, N = 100, f = f1);
+\end{chapel}
 
-As a short-hand for cases where there are many alternatives that
-define one symbol, the first line of the definition of the
-non-terminal may be followed by ``one of'' to indicate that the single
-line in the production defines alternatives for each symbol.
-\begin{example}
-The production
-\begin{syntax_donotcollect}
-unary-operator: one of
-  + $ $ $ $ - $ $ $ $ ~ $ $ $ $ !
-\end{syntax_donotcollect}
-is equivalent to
-\begin{syntax_donotcollect}
-unary-operator:
-  +
-  -
-  ~
-  !
-\end{syntax_donotcollect}
-\end{example}
+Different color text boxes are used to highlight various types of items 
+throughout the specification.
 
-As a short-hand to indicate an optional symbol in the definition of a
-production, the subscript ``opt'' is suffixed to the symbol.
-\begin{example}
-The production
-\begin{syntax_donotcollect}
-formal:
-  formal-tag identifier formal-type[OPT] default-expression[OPT]
-\end{syntax_donotcollect}
-is equivalent to
-\begin{syntax_donotcollect}
-formal:
-  formal-tag identifier formal-type default-expression
-  formal-tag identifier formal-type
-  formal-tag identifier default-expression
-  formal-tag identifier
-\end{syntax_donotcollect}
-\end{example}
+\begin{TODO}
+  Things that need to be done for this version of the software.
+\end{TODO}
+
+\begin{note}
+  Something of note that does not fit into any other category.
+\end{note}
+
+\begin{rationale}
+  An explanation for a particular design choice.
+\end{rationale}
+
+\begin{openissue}
+  Issue that we do not know how to handle.
+\end{openissue}
+
+\clearpage
+\begin{future}
+  Issue or feature that we have a story about, but which is not yet
+  fully-designed or implemented. 
+\end{future}

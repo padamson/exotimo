@@ -1,4 +1,4 @@
-\documentclass[10pt,twoside,titlepage]{spec}
+\documentclass[10pt,twoside,titlepage]{seamless}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{color}
@@ -9,9 +9,12 @@
 \usepackage{longtable}
 \usepackage[nottoc]{tocbibind}
 \usepackage{multirow}
-\input{chapel_testing}
+\usepackage{wrapfig,booktabs}
+\usepackage{subcaption}
+%\usepackage{cleveref}
+%\input{chapel_testing}
+\usepackage{seamless}
 \input{chapel_listing}
-\input{syntax_listing}
 
 %% High section numbers require different number widths
 \usepackage[titles]{tocloft}
@@ -23,20 +26,21 @@
 \setlength{\cftsubsecindent}{1.3em} % cftchapnumwidth
 \setlength{\cftsubsubsecindent}{4.5em} % cftchapnumwidth + cftsecnumwidth
 
-\usepackage{ifpdf}
-\ifpdf
-\usepackage[pdftex,
-            bookmarks,
-            plainpages=false,
-            breaklinks,
-            pdftitle={ExotiMO Package Specification},
-            pdfauthor={Paul Adamson},
-            pdfsubject={ExotiMO Package}
-           ]{hyperref}
-\else
-\usepackage[ps2pdf]{hyperref}
-\fi
+%\usepackage{ifpdf}
+%\ifpdf
+%\usepackage[pdftex,
+            %bookmarks,
+            %plainpages=false,
+            %breaklinks,
+            %pdftitle={ExotiMO},
+            %pdfauthor={Paul Adamson},
+            %pdfsubject={Quantum Chemistry, Exotic Particles}
+           %]{hyperref}
+%\else
+%\usepackage[ps2pdf]{hyperref}
+%\fi
 
+% some custom latex convenience commands
 \usepackage{xspace}
 \newcommand*{\eg}{\emph{e.g.}\@\xspace}
 \newcommand*{\ie}{\emph{i.e.}\@\xspace}
@@ -49,76 +53,6 @@
 }
 \makeatother
 
-\newenvironment{TODO} {
-\begin{quote}
-{\it TODO:}
-}{
-\end{quote}
-}
-
-\newenvironment{example}{
-\begin{quote}
-{\it Example}.
-}{
-\end{quote}
-}
-
-\newenvironment{chapelsource}[1]{
-\begin{quote}
-{\it Source (#1)}.
-}{
-\end{quote}
-}
-
-\newenvironment{chapelexample}[1]{
-\begin{quote}
-{\it Example (#1)}.
-}{
-\end{quote}
-}
-
-\newenvironment{note}{
-\begin{quote}
-{\it Implementors' note}.
-}{
-\end{quote}
-}
-
-\newenvironment{rationale}{
-\begin{quote}
-{\it Rationale}.
-}{
-\end{quote}
-}
-
-\newenvironment{openissue}{
-\begin{quote}
-{\it Open issue}.
-}{
-\end{quote}
-}
-
-\newenvironment{future}{
-\begin{quote}
-{\it Future}.
-}{
-\end{quote}
-}
-
-\newenvironment{craychapel}{
-\begin{quote}
-{\it Cray's Chapel Implementation}.
-}{
-\end{quote}
-}
-
-\newenvironment{suggestionbox}{
-\begin{quote}
-{\it Suggestions?}
-}{
-\end{quote}
-}
-
 \newcommand{\rsec}[1]
            {\S\ref{#1}}
 
@@ -126,7 +60,7 @@
 \newcommand{\sekshun}[1]
            {
              \chapter{#1}
-             \markboth{ExotiMO Package Specification}{#1}
+             \markboth{ExotiMO}{#1}
            }
 
 \oddsidemargin 0.0in
@@ -138,13 +72,13 @@
 \textheight 8.5in
 
 \makeindex
-\title{ExotiMO Package Specification\\Version 0.1}
+\title{ExotiMO}
 
 \author{Paul Adamson\\
 \\
 }
 
-\date{December 28, 2014}
+\date{January 15, 2015}
 
 \setcounter{tocdepth}{3}
 
@@ -169,7 +103,7 @@
 \cleardoublepage
 
 \pagestyle{myheadings}
-\markboth{ExotiMO Package Specification}{ExotiMO Package Specification}
+\markboth{ExotiMO}{ExotiMO}
 %\pagenumbering{roman}
 
 \ifpdf
@@ -186,31 +120,27 @@
 \setlength{\parskip}{4mm plus2mm minus1mm}
 
 \part{Introduction}
+\input{Notation}
+\cleardoublepage
 \input{Purpose}
 \cleardoublepage
 \input{Acknowledgments}
 \cleardoublepage
-\input{Notation}
-\cleardoublepage
 \input{Organization}
-\cleardoublepage
-\input{../../seamless/spec/Development_Approach}
 \cleardoublepage
 \part{Requirements Specification}
 \input{Scope}
 \cleardoublepage
-%\input{Functional_Requirements}
-%\cleardoublepage
 \part{Technical Specification}
 \input{Restricted_Hartree-Fock}
 \cleardoublepage
 \input{Auxiliary_Functions}
 \cleardoublepage
 \appendix
-\input{Syntax}
+\input{Requirement_Traceability}
 \cleardoublepage
-\markboth{ExotiMO Package Specification}{Index}
-\input{spec.ind}
+\markboth{ExotiMO}{Index}
+\input{ExotiMO.ind}
 
 \bibliographystyle{plain}       
 \bibliography{master} 

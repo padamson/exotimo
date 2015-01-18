@@ -47,9 +47,9 @@ We need a function, \lstinline{binomial}, that computes the binomial coefficient
 \begin{chapelexample}{binomialTest.chpl}
 In the code
 \begin{chapelpre}
-use auxiliary;
 \end{chapelpre}
 \begin{chapel}
+use auxiliary;
 for m in (10, 15, 20) do {
   for n in (3, 5, 7) do {
     writeln(binomial(m,n));
@@ -59,8 +59,6 @@ for m in (10, 15, 20) do {
 we use the \lstinline{binomial} function to output $\binom{m}{n}$ 
 for $m\in\{10, 15, 20\}$ and $n \in \{3, 5, 7\}$.
 \begin{chapelpost}
-writeln(a);
-writeln(b);
 \end{chapelpost}
 \begin{chapeloutput}
 120
@@ -84,5 +82,4 @@ proc binomial(m: int, n: int): int {
 }
 \end{chapel}
 \end{chapelsource}
-
 

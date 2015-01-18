@@ -41,13 +41,6 @@ proc lgamma2(z:real):real{
 }
 */
 
-proc factorial(n: int): int{
-  if (n <= 1) then return 1;
-  return n*factorial(n-1);
-}
-
-proc binomial(a: int, b: int): int {return factorial(a)/(factorial(b)*factorial(a-b));}
-
 proc fB(i: int, l1: int, l2: int, px: real, ax: real, bx: real, 
 		 r: int, g: real): real {
   return binomial_prefactor(i,l1,l2,px-ax,px-bx)*Bfunc(i,r,g);

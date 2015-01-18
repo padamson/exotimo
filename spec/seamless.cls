@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{spec}
+\ProvidesClass{seamless}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
