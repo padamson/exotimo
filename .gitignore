@@ -13,3 +13,8 @@
 /spec/*.pdf
 /spec/spec_pl.tex
 /spec/_chapter_temp.tex
+
+# Generated tests and source ignores
+/spec/test/
+/spec/src/
+/spec/helper/

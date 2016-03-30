@@ -14,8 +14,8 @@ ExotiMO relies on several auxiliary functions. This chapter details those functi
 In the code
 \begin{chapelpre}
 \end{chapelpre}
-use auxiliary;
 \begin{chapel}
+use auxiliary;
 for n in (2, 4, 9) do
   writeln(factorial(n));
 \end{chapel}
@@ -84,4 +84,35 @@ proc binomial(m: int, n: int): int {
 \end{chapelsource}
 
 
+\section{Double Factorial}
+\index{auxiliary functions!double factorial}
+\index{double factorial}
 
+\begin{chapeltest}{doubleFactorialTest.chpl}
+In the code
+\begin{chapelpre}
+\end{chapelpre}
+\begin{chapel}
+use auxiliary;
+for n in (2, 4, 9) do
+  writeln(doubleFactorial(n));
+\end{chapel}
+we use the doubleFactorial function to write $2!!$, $4!!$, and $9!!$ out on new lines.
+\begin{chapelpost}
+\end{chapelpost}
+\begin{chapeloutput}
+2
+8
+945
+\end{chapeloutput}
+\end{chapeltest}
+
+The code that provides the $n!!$ function:
+\begin{chapelsource}{auxiliary.chpl}
+\begin{chapel}
+proc doubleFactorial(n: int): int{ 
+  if (n <= 1) then return 1;
+  return n*doubleFactorial(n-2);
+}
+\end{chapel}
+\end{chapelsource}

@@ -66,11 +66,6 @@ proc factorial_ratio2(a: int, b: int): int {
 }
 
 
-/* double factorial function = 1*3*5*...*n */
-proc double_factorial(n: int): int{ 
-  if (n <= 1) then return 1;
-  return n*double_factorial(n-2);
-}
 
 proc dist2(x1: 3*real, x2: 3*real): real{
   return (x1(1)-x2(1))*(x1(1)-x2(1))
