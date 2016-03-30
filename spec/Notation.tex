@@ -2,15 +2,16 @@
 \label{Notation}
 \index{notation}
 
-Three types of code chunks that make up the software package are 
+Four types of code chunks that make up the software package are 
 presented in this specification and delineated
 with the appropriate keyword in italics: 
-\textit{Source, Helper, or Test}.  The filename containing the code
+\textit{Source, Helper, App, or Test}.  The filename containing the code
 chunk is given in parenthesis following the keyword. A brief description 
 of the code chunk is also listed.
 The actual code is represented with a fixed-width font where keywords are
 bold and comments are italicized. An example helper code chunk is listed
 below.
+\todo{Refactor Example keyword to App.}
 
 \textit{Helper (testFunctions.chpl)}. Provide the functions used
 in the tests.
@@ -26,11 +27,13 @@ in the tests.
   } 
 \end{chapel}
 
-Examples of how to use the software are also provided and delineated with the
-keyword \textit{Example} followed by a description of the use case. Here is
-an example of an \textit{Example}:
+\todo{Describe all of the types of code chunks.}
+ExotiMO applications are provided and delineated with the
+keyword \textit{App} followed by a description of the use case. Here is
+an example of an \textit{App}:
 
-\textit{Example}. The following line of code calls the function
+\todo{Make the example app relevant to ExotiMO.}
+\textit{App}. The following line of code calls the function
 \chpl{leftRectangleIntegration} to perform the integral of the function \chpl{f1}
 over the interval $[1.0,4.0]$ using the left rectangle method with 100 subdivisions
 and stores the result in the variable \chpl{result}.

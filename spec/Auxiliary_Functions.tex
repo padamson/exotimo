@@ -10,7 +10,7 @@ ExotiMO relies on several auxiliary functions. This chapter details those functi
 \index{auxiliary functions!factorial}
 \index{factorial}
 
-\begin{chapelexample}{factorialTest.chpl}
+\begin{chapeltest}{factorialTest.chpl}
 In the code
 \begin{chapelpre}
 use auxiliary;
@@ -27,7 +27,7 @@ we use the factorial function to write $2!$, $4!$, and $9!$ out on new lines.
 24
 362880
 \end{chapeloutput}
-\end{chapelexample}
+\end{chapeltest}
 
 The code that provides the $n!$ function is straightforward:
 \begin{chapelsource}{auxiliary.chpl}
@@ -44,7 +44,7 @@ proc factorial(n: int): int{
 \index{binomial function}
 
 We need a function, \lstinline{binomial}, that computes the binomial coefficient $\binom{m}{n}$.
-\begin{chapelexample}{binomialTest.chpl}
+\begin{chapeltest}{binomialTest.chpl}
 In the code
 \begin{chapelpre}
 \end{chapelpre}
@@ -71,7 +71,7 @@ for $m\in\{10, 15, 20\}$ and $n \in \{3, 5, 7\}$.
 15504
 77520
 \end{chapeloutput}
-\end{chapelexample}
+\end{chapeltest}
 
 The code that provides the \lstinline{binomial} function is straightforward 
 and requires the \lstinline{factorial} function:
@@ -82,4 +82,6 @@ proc binomial(m: int, n: int): int {
 }
 \end{chapel}
 \end{chapelsource}
+
+
 
